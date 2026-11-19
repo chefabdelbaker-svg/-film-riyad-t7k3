@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Film de présentation</title>
+<style>
+  :root{--gold:#c9a45c;--bg:#0b0b0c}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:#fff;font-family:Georgia,'Times New Roman',serif}
+  .wrap{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:18px}
+  .frame{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border:1px solid #2a2a2a;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  video{width:100%;height:100%;display:block;background:#000}
+  .langs{display:flex;gap:12px}
+  button{background:transparent;color:#fff;border:1px solid #555;padding:12px 30px;font-size:17px;letter-spacing:.12em;cursor:pointer;font-family:inherit;transition:.2s}
+  button:hover{border-color:var(--gold);color:var(--gold)}
+  button.on{background:var(--gold);color:#111;border-color:var(--gold)}
+  .note{font-size:12px;letter-spacing:.2em;color:#888;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="frame"><video id="v" controls playsinline preload="metadata" controlsList="nodownload" oncontextmenu="return false"></video></div>
+  <div class="langs">
+    <button data-l="fr" class="on">FRANÇAIS</button>
+    <button data-l="en">ENGLISH</button>
+    <button data-l="ar" dir="rtl">العربية</button>
+  </div>
+  <div class="note">Confidentiel</div>
+</div>
+<script>
+var B="https://d2ol7oe51mr4n9.cloudfront.net/user_3D21VIDvQO6GQiebCPHkrkl9cVl/";
+var S={fr:B+"e0240fd6-00c2-45f0-9d7a-fda128f864fc.mp4",
+       en:B+"f3dcfb36-1ed0-470c-bdc1-154762f5ef07.mp4",
+       ar:B+"d1e31ed2-2449-4138-86cf-70bc9b3aa005.mp4"};
+var v=document.getElementById("v"),bs=document.querySelectorAll("button");
+function set(l,play){
+  bs.forEach(function(b){b.classList.toggle("on",b.dataset.l===l)});
+  v.src=S[l]; v.load(); if(play){var p=v.play(); if(p&&p.catch)p.catch(function(){})}
+  try{history.replaceState(null,"","#"+l)}catch(e){}
+}
+bs.forEach(function(b){b.onclick=function(){set(b.dataset.l,true)}});
+var h=(location.hash||"").slice(1); set(S[h]?h:"fr",false);
+</script>
+</body>
+</html>
