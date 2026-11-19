@@ -9,14 +9,14 @@
   :root{--gold:#c9a45c;--bg:#0b0b0c}
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;background:var(--bg);color:#fff;font-family:Georgia,'Times New Roman',serif}
-  .wrap{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:18px}
-  .frame{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border:1px solid #2a2a2a;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0}
+  .frame{width:min(100vw,calc((100vh - 34px)*16/9));aspect-ratio:16/9;background:#000}
   video{width:100%;height:100%;display:block;background:#000}
-  .langs{display:flex;gap:12px}
-  button{background:transparent;color:#fff;border:1px solid #555;padding:12px 30px;font-size:17px;letter-spacing:.12em;cursor:pointer;font-family:inherit;transition:.2s}
-  button:hover{border-color:var(--gold);color:var(--gold)}
-  button.on{background:var(--gold);color:#111;border-color:var(--gold)}
-  .note{font-size:12px;letter-spacing:.2em;color:#888;text-transform:uppercase}
+  .langs{display:flex;gap:4px;height:28px;align-items:center}
+  button{background:transparent;color:#777;border:0;padding:4px 12px;font-size:12px;letter-spacing:.14em;cursor:pointer;font-family:inherit;transition:.2s}
+  button:hover{color:var(--gold)}
+  button.on{color:var(--gold);border-bottom:1px solid var(--gold)}
+  .note{display:none}
 </style>
 </head>
 <body>
